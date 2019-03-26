@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './pages/user/user.module';
 import { HomeModule } from './pages/home/home.module';
+import { NotAllowedGuard } from './core/guards/not-allowed.guard';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { HomeModule } from './pages/home/home.module';
     UserModule,
     HomeModule   
 ],
-  providers: [],
+  providers: [NotAllowedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

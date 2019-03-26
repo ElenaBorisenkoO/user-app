@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from './user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces/user';
 
 @Component({
@@ -10,16 +10,23 @@ import { IUser } from 'src/app/shared/interfaces/user';
 })
 export class UserComponent implements OnInit {
   user: IUser;
-  displayedColumns: string[] = ['Login', 'Id', 'Repos', 'Type'];
+  repos: [];
+  name: string = this.route.snapshot.params.name;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
 
-  ngOnInit() {
-    const name = this.route.snapshot.params.name;
-
-    this.userService.getUserData(name).subscribe(user =>{
-      this.user = user;  
-  });
+  ngOnInit(): void {
+    this.userService.getUserData(this.name).subscribe(user => {
+      this.user = user;
+    });
   }
-
+  showRepos(): void {
+    this.userService.getUserRepos(this.name).subscribe(repos => {
+    this.repos = repos;
+    this.router.navigate([`/user/${this.name}/repos`]);
+    });  
+  }
+  banUser(): void {
+    localStorage.setItem('name', this.name);
+  }
 }
