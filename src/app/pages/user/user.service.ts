@@ -13,5 +13,8 @@ export class UserService implements OnInit {
   getUserData(name:string): Observable<IUser> {
     return this.http.get<IUser>(`${API_KEY}/users/${name}`);
   }
+  getUserRepos(name:string): Observable<any> {
+    return this.http.get<IUser>(`${API_KEY}/users/${name}/repos`);
+  }
 
 }
