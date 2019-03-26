@@ -10,9 +10,8 @@ import { IUser } from 'src/app/shared/interfaces/user';
 })
 export class UserComponent implements OnInit {
   user: IUser;
-  repos:any;
   displayedColumns: string[] = ['Login', 'Id', 'Repos', 'Type'];
-  name: any = this.route.snapshot.params.name;
+  name: string = this.route.snapshot.params.name;
   
   constructor(private userService: UserService, private route: ActivatedRoute, private router:Router) { }
 
@@ -22,10 +21,7 @@ export class UserComponent implements OnInit {
   });
 }
 showRepos():void{
-  console.log(this.name);
-
-  this.userService.getUserRepos(this.name).subscribe(repos => 
-    this.repos = repos)
+  this.router.navigate([`/user/${this.name}/repos`]);
   }
-
+  
 }

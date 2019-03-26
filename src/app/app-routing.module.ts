@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserComponent } from './pages/user/user.component';
+import { ReposComponent } from './pages/user/repos/repos.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path:'user/:name',
     component: UserComponent
+  },
+  {
+    path:'user/:name/:repos',
+    component: ReposComponent
   },
   {
     path:'**',

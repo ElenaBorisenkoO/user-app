@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { UserService } from './user.service';
 import {MatTableModule} from '@angular/material/table';
+import { ReposComponent } from './repos/repos.component'
 
 @NgModule({
-  declarations: [UserComponent],
+  declarations: [UserComponent,ReposComponent],
   imports: [
     BrowserModule,
     CommonModule,
