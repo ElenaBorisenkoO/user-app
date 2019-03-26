@@ -1,7 +1,5 @@
-<p>
-  repos works!
-</p>
-<p>
-  {{repos | json}}
-</p>
-
+<mat-list *ngIf="repos">
+      <mat-list-item *ngFor="let repo of repos">
+          <mat-list-item>{{ repo.name }}</mat-list-item>
+      </mat-list-item>
+</mat-list>
