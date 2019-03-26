@@ -12,16 +12,19 @@ export class UserComponent implements OnInit {
   user: IUser;
   displayedColumns: string[] = ['Login', 'Id', 'Repos', 'Type'];
   name: string = this.route.snapshot.params.name;
-  
-  constructor(private userService: UserService, private route: ActivatedRoute, private router:Router) { }
 
-  ngOnInit(): void  {
-    this.userService.getUserData(this.name).subscribe(user =>{
-      this.user = user;  
-  });
-}
-showRepos():void{
-  this.router.navigate([`/user/${this.name}/repos`]);
+  constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+
+  ngOnInit(): void {
+    this.userService.getUserData(this.name).subscribe(user => {
+      this.user = user;
+    });
   }
-  
+  showRepos(): void {
+    this.router.navigate([`/user/${this.name}/repos`]);
+  }
+  banUser(): void {
+    localStorage.setItem('name', this.name);
+  }
+
 }

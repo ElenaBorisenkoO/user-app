@@ -18,6 +18,5 @@ export class ReposComponent implements OnInit {
     
   this.userService.getUserRepos(this.userName).subscribe(repos => 
     this.repos = repos)
-
   }
 }

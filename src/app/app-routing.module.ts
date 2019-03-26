@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 import { UserComponent } from './pages/user/user.component';
 import { ReposComponent } from './pages/user/repos/repos.component';
+import { NotAllowedGuard } from './core/guards/not-allowed.guard';
 
 const routes: Routes = [
   {
@@ -14,9 +15,11 @@ const routes: Routes = [
     path:'user/:name',
     component: UserComponent
   },
+  
   {
     path:'user/:name/:repos',
-    component: ReposComponent
+    component: ReposComponent,
+    canActivate:[NotAllowedGuard]
   },
   {
     path:'**',
