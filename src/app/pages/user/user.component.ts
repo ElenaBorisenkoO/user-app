@@ -10,7 +10,7 @@ import { IUser } from 'src/app/shared/interfaces/user';
 })
 export class UserComponent implements OnInit {
   user: IUser;
-  displayedColumns: string[] = ['Login', 'Id', 'Repos', 'Type'];
+  repos: [];
   name: string = this.route.snapshot.params.name;
 
   constructor(private userService: UserService, private route: ActivatedRoute, private router: Router) { }
@@ -21,10 +21,12 @@ export class UserComponent implements OnInit {
     });
   }
   showRepos(): void {
+    this.userService.getUserRepos(this.name).subscribe(repos => {
+    this.repos = repos;
     this.router.navigate([`/user/${this.name}/repos`]);
+    });  
   }
   banUser(): void {
     localStorage.setItem('name', this.name);
   }
-
 }

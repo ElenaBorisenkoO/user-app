@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserComponent } from '../user.component';
 
 @Component({
   selector: 'app-repos',
@@ -8,17 +9,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./repos.component.css'],
   providers: [UserService]
 })
-export class ReposComponent implements OnInit {
-  repos: any;
-  userName: string = this.route.snapshot.params.name;
-
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-
-    this.userService.getUserRepos(this.userName).subscribe(repos => {
-      this.repos = repos;
-      console.log(this.repos);
-    })
+export class ReposComponent implements OnInit{
+ userRepos:[];
+  constructor(private userService: UserService, private route: ActivatedRoute, 
+    private router: Router, private userComponent:UserComponent) {
+    
   }
+  ngOnInit(): void {
+  this.userRepos = this.userComponent.repos;
+  }
+
 }
+
+
+  
+
+

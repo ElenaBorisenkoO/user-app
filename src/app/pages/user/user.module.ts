@@ -8,18 +8,20 @@ import {MatButtonModule} from '@angular/material';
 import { ReposComponent } from './repos/repos.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list'
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 @NgModule({
-  declarations: [UserComponent,ReposComponent],
+  declarations: [UserComponent, ReposComponent],
   imports: [
     BrowserModule,
     CommonModule,
+    AppRoutingModule,
     MatTableModule,
     MatButtonModule,
     MatCardModule,
     MatListModule
     ],
-    exports:[UserComponent],
+    exports:[UserComponent, ReposComponent],
     providers:[UserService]
 })
 export class UserModule { }

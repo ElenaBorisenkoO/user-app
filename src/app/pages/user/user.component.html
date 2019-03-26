@@ -1,3 +1,5 @@
+<section class='user-page'>
+<div>
 <button mat-raised-button color="accent" (click)='showRepos()'>See repos</button>
 <button mat-raised-button color="warn" (click)='banUser()'>BAN!</button>
 <mat-card *ngIf="user"class="example-card">
@@ -12,3 +14,9 @@
       <p> Curabitur maximus, felis sit amet tempus pretium, ipsum erat mattis purus, </p>
     </mat-card-content>
   </mat-card>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+</section>
